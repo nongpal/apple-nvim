@@ -1,9 +1,13 @@
 set ignorecase
+set textwidth=72
+set shell=bash
 set backup
 set history=50
 set nolangremap
-vnoremap _g y:exe "grep /" .. escape(@", '\\/') .. "/ *.c *.h"<CR>
+map Q gq
 filetype plugin indent on
+
+" vnoremap _g y:exe "grep /" .. escape(@", '\\/') .. "/ **/*.c"<CR>
 
 augroup RestoreCursor
 	autocmd!
@@ -11,11 +15,10 @@ augroup RestoreCursor
 				\ let s:line = line("'\"")
 				\ | if s:line >= 1 && s:line <= line("$") && &filetype !~# 'commit'
 				\      && index(['xxd', 'gitrebase'], &filetype) == -1
-				\ |   execute "normal! g`\""
+				\      && !&diff
+				\ |  execute "normal! g`\""
 				\ | endif
-autogroup End
+augroup END
 
 command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-	  \ | wincmd p | diffthis
-
-
+			\ | wincmd p | diffthis
