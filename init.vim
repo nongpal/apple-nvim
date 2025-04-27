@@ -2,6 +2,7 @@ set ignorecase
 set textwidth=72
 set shell=bash
 " set backup
+set number
 set history=50
 set nolangremap
 map Q gq
