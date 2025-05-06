@@ -1,6 +1,24 @@
 set ignorecase
 set textwidth=72
 set shell=bash
+
+" setting indent
+filetype plugin indent on
+set expandtab
+set tabstop=4
+set autoindent
+set smartindent
+set shiftwidth=4
+set cindent
+
+" auto close bracket
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap {<CR> {<CR>}<Esc>O
+
 " set backup
 set number
 set history=50
